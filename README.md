@@ -44,6 +44,19 @@ Listen on an event emitter:
     var emitter = null; // Assign your reel data emitter here
     relay.addListener( { protocol: 'event', path: emitter } );
 
+### hci
+
+Listen on a local Bluetooth radio via HCI:
+
+    relay.addListener( { protocol: "hci", path: null } );
+
+Requires explicit installation of the serialport package:
+
+    npm install bluetooth-hci-socket
+
+You may need to run as super-user to have permission to access the Bluetooth radio.
+
+
 License
 -------
 
