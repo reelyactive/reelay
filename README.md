@@ -24,6 +24,26 @@ Relay packets from an _emitter_ via UDP to port 50000 on the local machine:
     relay.addForwarder( { protocol: 'udp', port: 50000, address: 'localhost' } );
 
 
+Supported listeners
+-------------------
+
+### serial
+
+Listen on a serial port:
+
+    relay.addListener( { protocol: "serial", path: "auto" } );
+
+Requires explicit installation of the serialport package:
+
+    npm install serialport
+
+### emitter
+
+Listen on an event emitter:
+
+    var emitter = null; // Assign your reel data emitter here
+    relay.addListener( { protocol: 'event', path: emitter } );
+
 License
 -------
 
