@@ -37,6 +37,12 @@ Requires explicit installation of the serialport package:
 
     npm install serialport
 
+### UDP
+
+Listen on a UDP port:
+
+    relay.addListener( { protocol: 'udp', path: '127.0.0.1:50000' } );
+
 ### emitter
 
 Listen on an event emitter:
@@ -44,7 +50,7 @@ Listen on an event emitter:
     var emitter = null; // Assign your reel data emitter here
     relay.addListener( { protocol: 'event', path: emitter } );
 
-### hci
+### HCI
 
 Listen on a local Bluetooth radio via HCI:
 
@@ -55,6 +61,12 @@ Requires explicit installation of the serialport package:
     npm install bluetooth-hci-socket
 
 You may need to run as super-user to have permission to access the Bluetooth radio.
+
+### test
+
+Internally generate packets for testing:
+
+    relay.addListener( { protocol: "test", path: null } );
 
 
 License
