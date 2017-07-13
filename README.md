@@ -13,14 +13,12 @@ Installation
 Hello reelay
 ------------
 
-Relay packets from an _emitter_ via UDP to port 50000 on the local machine:
+Relay internally generated test packets via UDP to port 50000 on the local machine:
 
     var reelay = require('reelay');
 
-    var emitter = null; // Assign your reel data emitter here
-
     var relay = new reelay();
-    relay.addListener( { protocol: 'event', path: emitter, enableMixing: false } );
+    relay.addListener( { protocol: 'test', path: null, enableMixing: false } );
     relay.addForwarder( { protocol: 'udp', port: 50000, address: 'localhost' } );
 
 
@@ -33,7 +31,7 @@ Listen on a serial port:
 
     relay.addListener( { protocol: "serial", path: "auto" } );
 
-Requires explicit installation of the serialport package:
+Requires explicit installation of the [serialport](https://www.npmjs.com/package/serialport) package:
 
     npm install serialport
 
@@ -56,7 +54,7 @@ Listen on a local Bluetooth radio via HCI:
 
     relay.addListener( { protocol: "hci", path: null } );
 
-Requires explicit installation of the serialport package:
+Requires explicit installation of the [bluetooth-hci-socket](https://www.npmjs.com/package/bluetooth-hci-socket) package:
 
     npm install bluetooth-hci-socket
 
@@ -67,6 +65,22 @@ You may need to run as super-user to have permission to access the Bluetooth rad
 Internally generate packets for testing:
 
     relay.addListener( { protocol: "test", path: null } );
+
+
+Supported forwarders
+--------------------
+
+### UDP
+
+Forward via UDP packets:
+
+    relay.addForwarder({
+      protocol: 'udp',
+      port: 50000,
+      address: 'localhost',
+      maxPayloadBytes: 508,
+      maxDelayMilliseconds: 500
+    });
 
 
 License
